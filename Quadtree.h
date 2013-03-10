@@ -13,23 +13,25 @@ class Object;
 
 class Quadtree {
 public:
-							Quadtree( float x, float y, float width, float height, int level, int maxLevel );
+						Quadtree(float x, float y, float width, float height, int level, int maxLevel);
+						
+						~Quadtree();
 
-	void					AddObject( Object *object );
-	vector<Object*>			GetObjectsAt( float x, float y );
+	void					AddObject(Object *object);
+	vector<Object*>				GetObjectsAt(float x, float y);
 	void					Clear();
 
-	void					SetFont( const sf::Font &font );
-	void					Draw( sf::RenderTarget &canvas );
+	void					SetFont(const sf::Font &font);
+	void					Draw(sf::RenderTarget &canvas);
 
 private:
 	float					x;
 	float					y;
 	float					width;
 	float					height;
-	int						level;
-	int						maxLevel;
-	vector<Object*>			objects;
+	int					level;
+	int					maxLevel;
+	vector<Object*>				objects;
 
 	Quadtree *				parent;
 	Quadtree *				NW;
@@ -37,10 +39,10 @@ private:
 	Quadtree *				SW;
 	Quadtree *				SE;
 
-	sf::RectangleShape		shape;
+	sf::RectangleShape			shape;
 	sf::Text				text;
 
-	bool					Contains( Quadtree *child, Object *object );
+	bool					contains(Quadtree *child, Object *object);
 };
 
 #endif
